@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* Custom styles for AGGrid compatibility */
 @layer base {
@@ -9,13 +7,3 @@
   }
 }
 
-@layer components {
-  /* AGGrid theme customizations */
-  .ag-theme-alpine {
-    --ag-header-background-color: #f8fafc;
-    --ag-header-foreground-color: #1e293b;
-    --ag-border-color: #e2e8f0;
-    --ag-row-hover-color: #f0f9ff;
-    --ag-selected-row-background-color: #dbeafe;
-  }
-}
