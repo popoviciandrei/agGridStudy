@@ -7,7 +7,7 @@ import {
   //   ICellRendererParams,
 } from "ag-grid-community";
 import { ColDef } from "ag-grid-community";
-import { themeQuartz, colorSchemeDarkBlue } from "ag-grid-community";
+import { themeQuartz } from "ag-grid-community";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 

@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, Suspense, lazy } from "react";
+// import EnterpriseGrid from "./grids/EnterpriseGrid";
 
-import BasicGrid from "./grids/BasicGrid";
+const BasicGrid = lazy(() => import("./grids/BasicGrid"));
+const EnterpriseGrid = lazy(() => import("./grids/EnterpriseGrid"));
 
 const App = (): React.JSX.Element => {
-  const [selectedGrid, setSelectedGrid] = useState<string | undefined>();
+  const [selectedGrid, setSelectedGrid] = useState<string>("enterprise");
 
-  const renderGrid = () => {
+  const RenderGrid = () => {
     switch (selectedGrid) {
       case "basic":
         return <BasicGrid />;
+      case "enterprise":
+        return <EnterpriseGrid />;
       default:
         return null;
     }
@@ -32,9 +36,12 @@ const App = (): React.JSX.Element => {
         >
           <option>-</option>
           <option value="basic">01. Basic Grid</option>
+          <option value="enterprise">02. Enterprise Grid</option>
         </select>
       </div>
-      {renderGrid()}
+      <Suspense fallback={<div>Loading...</div>}>
+        <RenderGrid />
+      </Suspense>
     </div>
   );
 };
