@@ -1,11 +1,11 @@
 import React, { useState, Suspense, lazy } from "react";
-// import EnterpriseGrid from "./grids/EnterpriseGrid";
 
 const BasicGrid = lazy(() => import("./grids/BasicGrid"));
 const EnterpriseGrid = lazy(() => import("./grids/EnterpriseGrid"));
+const CustomCells = lazy(() => import("./grids/CustomCells"));
 
 const App = (): React.JSX.Element => {
-  const [selectedGrid, setSelectedGrid] = useState<string>("enterprise");
+  const [selectedGrid, setSelectedGrid] = useState<string>("custom-cells");
 
   const RenderGrid = () => {
     switch (selectedGrid) {
@@ -13,6 +13,8 @@ const App = (): React.JSX.Element => {
         return <BasicGrid />;
       case "enterprise":
         return <EnterpriseGrid />;
+      case "custom-cells":
+        return <CustomCells />;
       default:
         return null;
     }
@@ -37,6 +39,7 @@ const App = (): React.JSX.Element => {
           <option>-</option>
           <option value="basic">01. Basic Grid</option>
           <option value="enterprise">02. Enterprise Grid</option>
+          <option value="custom-cells">03. Custom Cells</option>
         </select>
       </div>
       <Suspense fallback={<div>Loading...</div>}>
