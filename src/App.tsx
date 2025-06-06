@@ -3,9 +3,12 @@ import React, { useState, Suspense, lazy } from "react";
 const BasicGrid = lazy(() => import("./grids/BasicGrid"));
 const EnterpriseGrid = lazy(() => import("./grids/EnterpriseGrid"));
 const CustomCells = lazy(() => import("./grids/CustomCells"));
+const AvoidWastedRenders = lazy(() => import("./grids/AvoidWastedRenders"));
 
 const App = (): React.JSX.Element => {
-  const [selectedGrid, setSelectedGrid] = useState<string>("custom-cells");
+  const [selectedGrid, setSelectedGrid] = useState<string>(
+    "avoid-wasted-renders"
+  );
 
   const RenderGrid = () => {
     switch (selectedGrid) {
@@ -15,6 +18,8 @@ const App = (): React.JSX.Element => {
         return <EnterpriseGrid />;
       case "custom-cells":
         return <CustomCells />;
+      case "avoid-wasted-renders":
+        return <AvoidWastedRenders />;
       default:
         return null;
     }
@@ -40,6 +45,7 @@ const App = (): React.JSX.Element => {
           <option value="basic">01. Basic Grid</option>
           <option value="enterprise">02. Enterprise Grid</option>
           <option value="custom-cells">03. Custom Cells</option>
+          <option value="avoid-wasted-renders">04. Avoid Wasted Renders</option>
         </select>
       </div>
       <Suspense fallback={<div>Loading...</div>}>
