@@ -4,10 +4,11 @@ const BasicGrid = lazy(() => import("./grids/BasicGrid"));
 const EnterpriseGrid = lazy(() => import("./grids/EnterpriseGrid"));
 const CustomCells = lazy(() => import("./grids/CustomCells"));
 const AvoidWastedRenders = lazy(() => import("./grids/AvoidWastedRenders"));
+const BuiltInColumnFilters = lazy(() => import("./grids/BuiltInColumnFilters"));
 
 const App = (): React.JSX.Element => {
   const [selectedGrid, setSelectedGrid] = useState<string>(
-    "avoid-wasted-renders"
+    "built-in-column-filters"
   );
 
   const RenderGrid = () => {
@@ -20,6 +21,8 @@ const App = (): React.JSX.Element => {
         return <CustomCells />;
       case "avoid-wasted-renders":
         return <AvoidWastedRenders />;
+      case "built-in-column-filters":
+        return <BuiltInColumnFilters />;
       default:
         return null;
     }
@@ -46,6 +49,9 @@ const App = (): React.JSX.Element => {
           <option value="enterprise">02. Enterprise Grid</option>
           <option value="custom-cells">03. Custom Cells</option>
           <option value="avoid-wasted-renders">04. Avoid Wasted Renders</option>
+          <option value="built-in-column-filters">
+            05. Built-in Column Filters
+          </option>
         </select>
       </div>
       <Suspense fallback={<div>Loading...</div>}>
