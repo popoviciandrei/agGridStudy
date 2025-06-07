@@ -8,9 +8,10 @@ const BuiltInColumnFilters = lazy(() => import("./grids/BuiltInColumnFilters"));
 const CustomFilterReactComponents = lazy(
   () => import("./grids/CustomFilterReactComponents")
 );
+const CustomFloatingFilter = lazy(() => import("./grids/CustomFloatingFilter"));
 const App = (): React.JSX.Element => {
   const [selectedGrid, setSelectedGrid] = useState<string>(
-    "custom-filter-react-components"
+    "custom-floating-filter"
   );
 
   const RenderGrid = () => {
@@ -27,6 +28,8 @@ const App = (): React.JSX.Element => {
         return <BuiltInColumnFilters />;
       case "custom-filter-react-components":
         return <CustomFilterReactComponents />;
+      case "custom-floating-filter":
+        return <CustomFloatingFilter />;
       default:
         return null;
     }
@@ -58,6 +61,9 @@ const App = (): React.JSX.Element => {
           </option>
           <option value="custom-filter-react-components">
             06. Custom Filter React Components
+          </option>
+          <option value="custom-floating-filter">
+            07. Custom Floating Filter
           </option>
         </select>
       </div>
