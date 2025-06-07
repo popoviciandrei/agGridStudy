@@ -5,10 +5,12 @@ const EnterpriseGrid = lazy(() => import("./grids/EnterpriseGrid"));
 const CustomCells = lazy(() => import("./grids/CustomCells"));
 const AvoidWastedRenders = lazy(() => import("./grids/AvoidWastedRenders"));
 const BuiltInColumnFilters = lazy(() => import("./grids/BuiltInColumnFilters"));
-
+const CustomFilterReactComponents = lazy(
+  () => import("./grids/CustomFilterReactComponents")
+);
 const App = (): React.JSX.Element => {
   const [selectedGrid, setSelectedGrid] = useState<string>(
-    "built-in-column-filters"
+    "custom-filter-react-components"
   );
 
   const RenderGrid = () => {
@@ -23,6 +25,8 @@ const App = (): React.JSX.Element => {
         return <AvoidWastedRenders />;
       case "built-in-column-filters":
         return <BuiltInColumnFilters />;
+      case "custom-filter-react-components":
+        return <CustomFilterReactComponents />;
       default:
         return null;
     }
@@ -51,6 +55,9 @@ const App = (): React.JSX.Element => {
           <option value="avoid-wasted-renders">04. Avoid Wasted Renders</option>
           <option value="built-in-column-filters">
             05. Built-in Column Filters
+          </option>
+          <option value="custom-filter-react-components">
+            06. Custom Filter React Components
           </option>
         </select>
       </div>
