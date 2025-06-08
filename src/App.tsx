@@ -13,9 +13,14 @@ const CustomReactComponents = lazy(
   () => import("./grids/CustomReactComponents")
 );
 const UpdateGrid = lazy(() => import("./grids/UpdateGrid"));
+const ColumnReactDefinitions = lazy(
+  () => import("./grids/ColumnReactDefinitions")
+);
 
 const App = (): React.JSX.Element => {
-  const [selectedGrid, setSelectedGrid] = useState<string>("update-grid");
+  const [selectedGrid, setSelectedGrid] = useState<string>(
+    "column-react-definitions"
+  );
 
   const RenderGrid = () => {
     switch (selectedGrid) {
@@ -37,6 +42,8 @@ const App = (): React.JSX.Element => {
         return <CustomReactComponents />;
       case "update-grid":
         return <UpdateGrid />;
+      case "column-react-definitions":
+        return <ColumnReactDefinitions />;
       default:
         return null;
     }
@@ -76,6 +83,9 @@ const App = (): React.JSX.Element => {
             08. Custom React Components
           </option>
           <option value="update-grid">09. Update Grid</option>
+          <option value="column-react-definitions">
+            10. Column React Definitions
+          </option>
         </select>
       </div>
       <Suspense fallback={<div>Loading...</div>}>
