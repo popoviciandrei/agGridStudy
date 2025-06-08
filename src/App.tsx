@@ -12,10 +12,10 @@ const CustomFloatingFilter = lazy(() => import("./grids/CustomFloatingFilter"));
 const CustomReactComponents = lazy(
   () => import("./grids/CustomReactComponents")
 );
+const UpdateGrid = lazy(() => import("./grids/UpdateGrid"));
+
 const App = (): React.JSX.Element => {
-  const [selectedGrid, setSelectedGrid] = useState<string>(
-    "custom-react-components"
-  );
+  const [selectedGrid, setSelectedGrid] = useState<string>("update-grid");
 
   const RenderGrid = () => {
     switch (selectedGrid) {
@@ -35,6 +35,8 @@ const App = (): React.JSX.Element => {
         return <CustomFloatingFilter />;
       case "custom-react-components":
         return <CustomReactComponents />;
+      case "update-grid":
+        return <UpdateGrid />;
       default:
         return null;
     }
@@ -73,6 +75,7 @@ const App = (): React.JSX.Element => {
           <option value="custom-react-components">
             08. Custom React Components
           </option>
+          <option value="update-grid">09. Update Grid</option>
         </select>
       </div>
       <Suspense fallback={<div>Loading...</div>}>
