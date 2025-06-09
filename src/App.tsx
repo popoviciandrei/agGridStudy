@@ -16,10 +16,13 @@ const UpdateGrid = lazy(() => import("./grids/UpdateGrid"));
 const ColumnReactDefinitions = lazy(
   () => import("./grids/ColumnReactDefinitions")
 );
+const ConfigureGridCoumnsWithReatStateAndGridAPI = lazy(
+  () => import("./grids/ConfigureGridCoumnsWithReatStateAndGridAPI")
+);
 
 const App = (): React.JSX.Element => {
   const [selectedGrid, setSelectedGrid] = useState<string>(
-    "column-react-definitions"
+    "configure-grid-coumns-with-reat-state-and-grid-api"
   );
 
   const RenderGrid = () => {
@@ -44,6 +47,8 @@ const App = (): React.JSX.Element => {
         return <UpdateGrid />;
       case "column-react-definitions":
         return <ColumnReactDefinitions />;
+      case "configure-grid-coumns-with-reat-state-and-grid-api":
+        return <ConfigureGridCoumnsWithReatStateAndGridAPI />;
       default:
         return null;
     }
@@ -85,6 +90,9 @@ const App = (): React.JSX.Element => {
           <option value="update-grid">09. Update Grid</option>
           <option value="column-react-definitions">
             10. Column React Definitions
+          </option>
+          <option value="configure-grid-coumns-with-reat-state-and-grid-api">
+            11. Configure Grid Coumns With Reat State And Grid API
           </option>
         </select>
       </div>
