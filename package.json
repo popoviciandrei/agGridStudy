@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.8",
+    "ag-charts-react": "^11.3.2",
     "ag-grid-community": "^33.3.2",
     "ag-grid-enterprise": "^33.3.2",
     "ag-grid-react": "^33.3.2",

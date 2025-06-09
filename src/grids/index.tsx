@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy } from 'react';
+import { useState, Suspense, lazy } from 'react';
 
 const BasicGrid = lazy(() => import('./BasicGrid'));
 const EnterpriseGrid = lazy(() => import('./EnterpriseGrid'));
@@ -46,7 +46,7 @@ export const Grids = () => {
 
   return (
     <div>
-      <div className="mb-4 flex justify-center items-center gap-4">
+      <div className="mb-4 flex items-center gap-4 m-4">
         <label htmlFor="grid-select">
           <strong>Select Grid Example:</strong>
         </label>

@@ -1,15 +1,16 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { Suspense, useState } from 'react';
+import Charts from './charts';
 import Grids from './grids';
 
 const App = (): React.JSX.Element => {
-  const [selectedGrid, setSelectedGrid] = useState<string>('grids');
+  const [selectedGrid, setSelectedGrid] = useState<string>('charts');
 
   const RenderGrid = () => {
     switch (selectedGrid) {
       case 'grids':
         return <Grids />;
       case 'charts':
-      // return <EnterpriseGrid />;
+        return <Charts />;
       default:
         return null;
     }
@@ -18,9 +19,9 @@ const App = (): React.JSX.Element => {
   return (
     <div className="bg-slate-100 h-screen full">
       {/* Header Section */}
-      <h1 className="text-3xl font-bold underline text-center mb-4">Vite + React + AG Grid + TypeScript + Tailwind</h1>
+      <h1 className="text-3xl font-bold underline text-center mb-4">AG Grid / Charts Example</h1>
 
-      <div className="mb-4 flex justify-center items-center gap-4">
+      <div className="mb-4 flex items-center gap-4 m-4">
         <label htmlFor="grid-select">
           <strong>Select AG Grid Examples:</strong>
         </label>
