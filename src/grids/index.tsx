@@ -1,18 +1,16 @@
 import React, { useState, Suspense, lazy } from 'react';
 
-const BasicGrid = lazy(() => import('./grids/BasicGrid'));
-const EnterpriseGrid = lazy(() => import('./grids/EnterpriseGrid'));
-const CustomCells = lazy(() => import('./grids/CustomCells'));
-const AvoidWastedRenders = lazy(() => import('./grids/AvoidWastedRenders'));
-const BuiltInColumnFilters = lazy(() => import('./grids/BuiltInColumnFilters'));
-const CustomFilterReactComponents = lazy(() => import('./grids/CustomFilterReactComponents'));
-const CustomFloatingFilter = lazy(() => import('./grids/CustomFloatingFilter'));
-const CustomReactComponents = lazy(() => import('./grids/CustomReactComponents'));
-const UpdateGrid = lazy(() => import('./grids/UpdateGrid'));
-const ColumnReactDefinitions = lazy(() => import('./grids/ColumnReactDefinitions'));
-const ConfigureGridCoumnsWithReatStateAndGridAPI = lazy(
-  () => import('./grids/ConfigureGridCoumnsWithReatStateAndGridAPI'),
-);
+const BasicGrid = lazy(() => import('./BasicGrid'));
+const EnterpriseGrid = lazy(() => import('./EnterpriseGrid'));
+const CustomCells = lazy(() => import('./CustomCells'));
+const AvoidWastedRenders = lazy(() => import('./AvoidWastedRenders'));
+const BuiltInColumnFilters = lazy(() => import('./BuiltInColumnFilters'));
+const CustomFilterReactComponents = lazy(() => import('./CustomFilterReactComponents'));
+const CustomFloatingFilter = lazy(() => import('./CustomFloatingFilter'));
+const CustomReactComponents = lazy(() => import('./CustomReactComponents'));
+const UpdateGrid = lazy(() => import('./UpdateGrid'));
+const ColumnReactDefinitions = lazy(() => import('./ColumnReactDefinitions'));
+const ConfigureGridCoumnsWithReatStateAndGridAPI = lazy(() => import('./ConfigureGridCoumnsWithReatStateAndGridAPI'));
 
 export const Grids = () => {
   const [selectedGrid, setSelectedGrid] = useState<string>('basic');

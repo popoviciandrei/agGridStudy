@@ -1,5 +1,5 @@
 import React, { useState, Suspense, lazy } from 'react';
-import Grids from './Grids';
+import Grids from './grids';
 
 const App = (): React.JSX.Element => {
   const [selectedGrid, setSelectedGrid] = useState<string>('grids');
