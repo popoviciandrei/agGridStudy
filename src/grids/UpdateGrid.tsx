@@ -1,14 +1,9 @@
-import React, { useState, useMemo, useCallback, useRef } from "react";
+import React, { useState, useMemo, useCallback, useRef } from 'react';
 
-import { AgGridReact } from "ag-grid-react";
-import {
-  ModuleRegistry,
-  AllCommunityModule,
-  GetRowIdParams,
-  RowNode,
-} from "ag-grid-community";
-import { ColDef } from "ag-grid-community";
-import { themeQuartz } from "ag-grid-community";
+import { AgGridReact } from 'ag-grid-react';
+import { ModuleRegistry, AllCommunityModule, GetRowIdParams, RowNode } from 'ag-grid-community';
+import { ColDef } from 'ag-grid-community';
+import { themeQuartz } from 'ag-grid-community';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -21,40 +16,22 @@ interface ItemData {
 }
 
 const formatCurrency = (value: number) => {
-  return Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
+  return Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
   }).format(value);
 };
 const myTheme = themeQuartz;
 
 const generateNewRecord = () => {
   return {
-    type: [
-      "Car",
-      "Truck",
-      "SUV",
-      "Motorcycle",
-      "Van",
-      "Convertible",
-      "Sedan",
-      "Coupe",
-      "Hatchback",
-      "Wagon",
-    ][Math.floor(Math.random() * 10)],
+    type: ['Car', 'Truck', 'SUV', 'Motorcycle', 'Van', 'Convertible', 'Sedan', 'Coupe', 'Hatchback', 'Wagon'][
+      Math.floor(Math.random() * 10)
+    ],
     year: Math.floor(Math.random() * (2024 - 2020 + 1)) + 2020,
-    color: [
-      "Red",
-      "Blue",
-      "Black",
-      "Green",
-      "White",
-      "Yellow",
-      "Silver",
-      "Orange",
-      "Purple",
-      "Brown",
-    ][Math.floor(Math.random() * 10)],
+    color: ['Red', 'Blue', 'Black', 'Green', 'White', 'Yellow', 'Silver', 'Orange', 'Purple', 'Brown'][
+      Math.floor(Math.random() * 10)
+    ],
     price: Math.floor(Math.random() * 10000),
     id: Math.floor(Math.random() * 1000000),
   };
@@ -74,18 +51,18 @@ const UpdateGrid = (): React.JSX.Element => {
   // Column Definitions to be displayed in the grid
   const [colDefs, setColDefs] = useState<ColDef<ItemData>[]>([
     {
-      field: "type",
+      field: 'type',
       sortable: true,
     },
     {
-      field: "year",
+      field: 'year',
     },
     {
-      field: "color",
+      field: 'color',
     },
     {
-      field: "price",
-      headerName: "Price",
+      field: 'price',
+      headerName: 'Price',
       valueFormatter: (p) => formatCurrency(p.value),
     },
   ]);
@@ -94,21 +71,15 @@ const UpdateGrid = (): React.JSX.Element => {
     () => ({
       flex: 1,
       //   editable: true,
-      cellRenderer: "agAnimateShowChangeCellRenderer",
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
       //   enableCellChangeFlash: true,
     }),
-    []
+    [],
   );
 
-  const onInsertOne = useCallback(
-    () => setRowData([...rowData, generateNewRecord()]),
-    [rowData]
-  );
+  const onInsertOne = useCallback(() => setRowData([...rowData, generateNewRecord()]), [rowData]);
 
-  const onReverse = useCallback(
-    () => setRowData([...rowData].reverse()),
-    [rowData]
-  );
+  const onReverse = useCallback(() => setRowData([...rowData].reverse()), [rowData]);
 
   const onRemove = useCallback(() => {
     const selectedNodes = gridRef.current?.api.getSelectedNodes();
@@ -124,11 +95,11 @@ const UpdateGrid = (): React.JSX.Element => {
           return {
             ...row,
             price: Math.floor(Math.random() * 10000),
-            color: Math.random() > 0.5 ? "Red" : "Blue",
+            color: Math.random() > 0.5 ? 'Red' : 'Blue',
           };
         }
         return row;
-      })
+      }),
     );
   }, [rowData]);
 
@@ -148,7 +119,7 @@ const UpdateGrid = (): React.JSX.Element => {
         updatedRecords.push({
           ...row,
           price: Math.floor(Math.random() * 10000),
-          color: Math.random() > 0.5 ? "Red" : "Blue",
+          color: Math.random() > 0.5 ? 'Red' : 'Blue',
         });
       }
     });
@@ -172,7 +143,7 @@ const UpdateGrid = (): React.JSX.Element => {
       {
         add: [newRecord],
       },
-      (res) => console.log(res)
+      (res) => console.log(res),
     );
   };
 
@@ -184,7 +155,7 @@ const UpdateGrid = (): React.JSX.Element => {
         updatedRecords.push({
           ...row,
           price: Math.floor(Math.random() * 10000),
-          color: Math.random() > 0.5 ? "Red" : "Blue",
+          color: Math.random() > 0.5 ? 'Red' : 'Blue',
         });
       }
     });
@@ -292,7 +263,7 @@ const UpdateGrid = (): React.JSX.Element => {
         getRowId={getRowId}
         columnDefs={colDefs}
         defaultColDef={defaultColDef}
-        rowSelection={{ mode: "multiRow" }}
+        rowSelection={{ mode: 'multiRow' }}
         rowData={rowData}
         asyncTransactionWaitMillis={5000}
       />

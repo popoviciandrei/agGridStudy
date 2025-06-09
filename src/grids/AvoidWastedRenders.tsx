@@ -1,10 +1,6 @@
-import { useEffect, useMemo, memo, useRef, useState } from "react";
-import { AgGridReact } from "ag-grid-react";
-import {
-  ModuleRegistry,
-  AllCommunityModule,
-  ICellRendererParams,
-} from "ag-grid-community";
+import { useEffect, useMemo, memo, useRef, useState } from 'react';
+import { AgGridReact } from 'ag-grid-react';
+import { ModuleRegistry, AllCommunityModule, ICellRendererParams } from 'ag-grid-community';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -22,16 +18,16 @@ const AvoidWastedRenders = () => {
   const gridRef = useRef<AgGridReact>(null);
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
-    { field: "athlete" },
-    { field: "age" },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'athlete' },
+    { field: 'age' },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
 
   const defaultColDef = useMemo(
@@ -40,11 +36,11 @@ const AvoidWastedRenders = () => {
       filter: true,
       cellRenderer: memo(MyComp),
     }),
-    []
+    [],
   );
 
   useEffect(() => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);

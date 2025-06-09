@@ -1,16 +1,11 @@
-import { IDoesFilterPassParams } from "ag-grid-community";
-import { CustomFilterProps, useGridFilter } from "ag-grid-react";
-import { useCallback, useEffect } from "react";
+import { IDoesFilterPassParams } from 'ag-grid-community';
+import { CustomFilterProps, useGridFilter } from 'ag-grid-react';
+import { useCallback, useEffect } from 'react';
 
-const MyFilter = ({
-  model,
-  onModelChange,
-  getValue,
-  colDef,
-}: CustomFilterProps & { title: string }) => {
+const MyFilter = ({ model, onModelChange, getValue, colDef }: CustomFilterProps & { title: string }) => {
   const valueChanged = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    onModelChange(value == "" ? null : value);
+    onModelChange(value == '' ? null : value);
   }, []);
 
   const doesFilterPass = useCallback(
@@ -18,7 +13,7 @@ const MyFilter = ({
       const value = getValue(node);
       return value == model;
     },
-    [model, getValue]
+    [model, getValue],
   );
 
   const getModelAsString = useCallback(() => model, [model]);
@@ -26,9 +21,9 @@ const MyFilter = ({
   useGridFilter({ doesFilterPass, getModelAsString });
 
   useEffect(() => {
-    console.log("Filter created");
+    console.log('Filter created');
     return () => {
-      console.log("Filter destroyed");
+      console.log('Filter destroyed');
     };
   }, []);
 
@@ -38,7 +33,7 @@ const MyFilter = ({
       <input
         type="text"
         className="border border-gray-300 rounded-md p-1"
-        value={model || ""}
+        value={model || ''}
         onChange={valueChanged}
       />
     </div>

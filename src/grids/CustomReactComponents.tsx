@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { AgGridReact } from "ag-grid-react";
-import { ModuleRegistry, AllCommunityModule } from "ag-grid-community";
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { AgGridReact } from 'ag-grid-react';
+import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
 
-import { AllEnterpriseModule } from "ag-grid-enterprise";
-import { HelloWorld, GoodByeWorld } from "./components";
+import { AllEnterpriseModule } from 'ag-grid-enterprise';
+import { HelloWorld, GoodByeWorld } from './components';
 
 ModuleRegistry.registerModules([AllCommunityModule, AllEnterpriseModule]);
 
@@ -20,35 +20,35 @@ const CustomReactComponents = () => {
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      field: "athlete",
+      field: 'athlete',
       cellRenderer: HelloWorld,
-      cellRendererParams: { name: "cellRendererParams" },
+      cellRendererParams: { name: 'cellRendererParams' },
       editable: true,
       cellEditor: GoodByeWorld,
-      cellEditorParams: { name: "cellEditorParams" },
+      cellEditorParams: { name: 'cellEditorParams' },
     },
     {
-      field: "age",
+      field: 'age',
       filter: HelloWorld,
-      filterParams: { name: "filterParams" },
-      cellRenderer: "filter",
-      cellRendererParams: { name: "custom cell renderer" },
+      filterParams: { name: 'filterParams' },
+      cellRenderer: 'filter',
+      cellRendererParams: { name: 'custom cell renderer' },
       floatingFilter: true,
       floatingFilterComponent: HelloWorld,
-      floatingFilterComponentParams: { name: "floatingFilterComponentParams" },
+      floatingFilterComponentParams: { name: 'floatingFilterComponentParams' },
     },
     {
-      field: "country",
+      field: 'country',
       headerComponent: HelloWorld,
-      headerComponentParams: { name: "headerComponentParams" },
+      headerComponentParams: { name: 'headerComponentParams' },
     },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
 
   const defaultColDef = useMemo(
@@ -57,11 +57,11 @@ const CustomReactComponents = () => {
       filter: true,
       enableRowGroup: true,
     }),
-    []
+    [],
   );
 
   useEffect(() => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -71,38 +71,38 @@ const CustomReactComponents = () => {
       <AgGridReact
         ref={gridRef}
         noRowsOverlayComponent={HelloWorld}
-        noRowsOverlayComponentParams={{ name: "Susan no rows" }}
+        noRowsOverlayComponentParams={{ name: 'Susan no rows' }}
         loadingOverlayComponent={GoodByeWorld}
-        loadingOverlayComponentParams={{ name: "Susan loading" }}
+        loadingOverlayComponentParams={{ name: 'Susan loading' }}
         statusBar={{
           statusPanels: [
             {
               statusPanel: HelloWorld,
-              statusPanelParams: { name: "Susan status 1" },
+              statusPanelParams: { name: 'Susan status 1' },
             },
             {
               statusPanel: GoodByeWorld,
-              statusPanelParams: { name: "Susan status 2" },
+              statusPanelParams: { name: 'Susan status 2' },
             },
           ],
         }}
         sideBar={{
           toolPanels: [
             {
-              id: "columns",
-              labelDefault: "ColumnsToolPanel",
-              labelKey: "columnsToolPanel",
-              iconKey: "columnsToolPanel",
-              toolPanel: "agColumnsToolPanel",
-              toolPanelParams: { name: "Susan tool panel" },
+              id: 'columns',
+              labelDefault: 'ColumnsToolPanel',
+              labelKey: 'columnsToolPanel',
+              iconKey: 'columnsToolPanel',
+              toolPanel: 'agColumnsToolPanel',
+              toolPanelParams: { name: 'Susan tool panel' },
             },
             {
-              id: "filters",
-              labelDefault: "FiltersToolPanel",
-              labelKey: "filtersToolPanel",
-              iconKey: "filtersToolPanel",
+              id: 'filters',
+              labelDefault: 'FiltersToolPanel',
+              labelKey: 'filtersToolPanel',
+              iconKey: 'filtersToolPanel',
               toolPanel: HelloWorld,
-              toolPanelParams: { name: "Susan tool panel" },
+              toolPanelParams: { name: 'Susan tool panel' },
             },
 
             // labelDefault: "Columns",

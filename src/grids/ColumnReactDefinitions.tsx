@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { AgGridReact } from "ag-grid-react";
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { AgGridReact } from 'ag-grid-react';
 import {
   ModuleRegistry,
   AllCommunityModule,
@@ -8,10 +8,10 @@ import {
   ColDef,
   ITooltipParams,
   ColGroupDef,
-} from "ag-grid-community";
-import { themeBalham as theme } from "ag-grid-community";
+} from 'ag-grid-community';
+import { themeBalham as theme } from 'ag-grid-community';
 
-import { AllEnterpriseModule } from "ag-grid-enterprise";
+import { AllEnterpriseModule } from 'ag-grid-enterprise';
 
 ModuleRegistry.registerModules([AllCommunityModule, AllEnterpriseModule]);
 
@@ -20,38 +20,38 @@ const ColumnReactDefinitions = () => {
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState<(ColDef | ColGroupDef)[]>([
     {
-      headerName: "Competitor",
-      field: "athlete",
+      headerName: 'Competitor',
+      field: 'athlete',
       flex: 2,
       valueGetter: (params: ValueGetterParams) => {
         return params.data.athlete;
       },
       valueFormatter: (params: ValueFormatterParams) => {
-        return "[ " + params.value + " ]";
+        return '[ ' + params.value + ' ]';
       },
-      pinned: "left",
+      pinned: 'left',
       // lockPinned: true,
       // hide: true,
-      tooltipField: "country",
-      headerTooltip: "Country of the competitor",
+      tooltipField: 'country',
+      headerTooltip: 'Country of the competitor',
     },
     {
-      field: "age",
+      field: 'age',
       tooltipValueGetter: (params: ITooltipParams) => {
-        return params.data.age + " years old";
+        return params.data.age + ' years old';
       },
     },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
     {
-      headerName: "Medals",
+      headerName: 'Medals',
       children: [
-        { field: "total" },
-        { field: "gold", columnGroupShow: "open" },
-        { field: "silver", columnGroupShow: "open" },
-        { field: "bronze", columnGroupShow: "open" },
+        { field: 'total' },
+        { field: 'gold', columnGroupShow: 'open' },
+        { field: 'silver', columnGroupShow: 'open' },
+        { field: 'bronze', columnGroupShow: 'open' },
       ],
     },
     // { field: "gold" },
@@ -67,11 +67,11 @@ const ColumnReactDefinitions = () => {
       sortable: true,
       // flex: 1,
     }),
-    []
+    [],
   );
 
   useEffect(() => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -88,10 +88,7 @@ const ColumnReactDefinitions = () => {
   return (
     <div className="w-full h-[500px]">
       <div className="flex flex-row gap-2 p-2">
-        <button
-          onClick={onPushMe}
-          className="bg-blue-500 text-white p-2 rounded-md"
-        >
+        <button onClick={onPushMe} className="bg-blue-500 text-white p-2 rounded-md">
           Push Me
         </button>
       </div>

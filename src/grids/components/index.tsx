@@ -1,4 +1,4 @@
-import { ICellRendererParams } from "ag-grid-community";
+import { ICellRendererParams } from 'ag-grid-community';
 
 export const HelloWorld = (props: ICellRendererParams & { name: string }) => {
   return <span className="text-red-500">Hello {props.name}</span>;

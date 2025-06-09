@@ -1,18 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { AgGridReact } from "ag-grid-react";
-import {
-  ModuleRegistry,
-  AllCommunityModule,
-  ICellRendererParams,
-} from "ag-grid-community";
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { AgGridReact } from 'ag-grid-react';
+import { ModuleRegistry, AllCommunityModule, ICellRendererParams } from 'ag-grid-community';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
-const SimpleCellRenderer = (
-  params: ICellRendererParams & { buttonText?: string }
-) => {
+const SimpleCellRenderer = (params: ICellRendererParams & { buttonText?: string }) => {
   const onAtClick = () => {
-    console.log("At clicked");
+    console.log('At clicked');
   };
 
   return (
@@ -30,21 +24,21 @@ const CustomCells = () => {
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      field: "athlete",
+      field: 'athlete',
       cellRenderer: SimpleCellRenderer,
     },
     {
-      field: "age",
+      field: 'age',
       cellRenderer: SimpleCellRenderer,
     },
-    { field: "country" },
-    { field: "year" },
-    { field: "date" },
-    { field: "sport" },
-    { field: "gold" },
-    { field: "silver" },
-    { field: "bronze" },
-    { field: "total" },
+    { field: 'country' },
+    { field: 'year' },
+    { field: 'date' },
+    { field: 'sport' },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' },
   ]);
 
   const defaultColDef = useMemo(
@@ -52,11 +46,11 @@ const CustomCells = () => {
       sortable: true,
       filter: true,
     }),
-    []
+    [],
   );
 
   useEffect(() => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);

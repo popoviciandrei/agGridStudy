@@ -1,14 +1,10 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { AgGridReact } from "ag-grid-react";
-import {
-  ModuleRegistry,
-  AllCommunityModule,
-  FilterModel,
-} from "ag-grid-community";
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { AgGridReact } from 'ag-grid-react';
+import { ModuleRegistry, AllCommunityModule, FilterModel } from 'ag-grid-community';
 
-import { themeAlpine as theme } from "ag-grid-community";
+import { themeAlpine as theme } from 'ag-grid-community';
 
-import { AllEnterpriseModule } from "ag-grid-enterprise";
+import { AllEnterpriseModule } from 'ag-grid-enterprise';
 
 ModuleRegistry.registerModules([
   AllCommunityModule,
@@ -21,22 +17,22 @@ const BuiltInColumnFilters = () => {
   const [rowData, setRowData] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
-      field: "athlete",
-      filter: "agTextColumnFilter",
+      field: 'athlete',
+      filter: 'agTextColumnFilter',
     },
-    { field: "age", filter: "agNumberColumnFilter" },
-    { field: "country", filter: "agMultiColumnFilter" },
-    { field: "year", filter: "agMultiColumnFilter" },
+    { field: 'age', filter: 'agNumberColumnFilter' },
+    { field: 'country', filter: 'agMultiColumnFilter' },
+    { field: 'year', filter: 'agMultiColumnFilter' },
     {
-      field: "date",
-      filter: "agDateColumnFilter",
+      field: 'date',
+      filter: 'agDateColumnFilter',
       filterParams: {
         comparator: (dateFromFilter: Date, cellValue: string) => {
           if (cellValue === null) {
             return 0;
           }
 
-          const dateParts = cellValue.split("/");
+          const dateParts = cellValue.split('/');
           const day = parseInt(dateParts[0]);
           const month = parseInt(dateParts[1]) - 1;
           const year = parseInt(dateParts[2]);
@@ -63,15 +59,15 @@ const BuiltInColumnFilters = () => {
       flex: 1,
       filterParams: {
         debounceMs: 0,
-        buttons: ["apply", "clear", "reset"],
+        buttons: ['apply', 'clear', 'reset'],
       },
       floatingFilter: true,
     }),
-    []
+    [],
   );
 
   useEffect(() => {
-    fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
       .then((resp) => resp.json())
       .then((data) => setRowData(data));
   }, []);
@@ -80,12 +76,12 @@ const BuiltInColumnFilters = () => {
 
   const onBtnSave = useCallback(() => {
     const filterModel = gridRef.current?.api?.getFilterModel();
-    console.log("Saving filter model", filterModel);
+    console.log('Saving filter model', filterModel);
     savedFiltersState.current = filterModel ?? null;
   }, []);
   const onBtnApply = useCallback(() => {
     const filterModel = savedFiltersState.current;
-    console.log("Applying filter model", filterModel);
+    console.log('Applying filter model', filterModel);
     gridRef.current?.api?.setFilterModel(filterModel);
   }, []);
 
